@@ -53,41 +53,41 @@ def lvm():
       ch = r.recognize_google(audio)
       ch = ch.lower()    
     os.system("tput setaf 7")        
-    if ("one" in ch) or ("amount of disk space that is free on file systems" in ch):         
+    if ("1" in ch) or ("amount of disk space" in ch):         
         os.system("df -hT")
         inter = input("do you want to continue on LVM  menu  [y/N]:\t")
         if inter != 'y' and inter!= 'Y':
             break
 
-    elif ("two" in ch) or ("formating the hard disk" in ch):       
+    elif ("2" in ch) or (("formating" in ch) and ("hard disk" in ch)):       
         format1=input("Enter your partition name :")
         os.system("mkfs.ext4 "+format1) 
         inter = input("do you want to continue on LVM  menu  [y/N]:\t")
         if inter != 'y' and inter!= 'Y':
             break
     
-    elif ("three" in ch) or ("making new directory" in ch):       
+    elif ("3" in ch) or ("making new directory" in ch):       
         name=input("name your directory :")
         os.system("mkdir /"+name)
         inter = input("do you want to continue on LVM  menu  [y/N]:\t")
         if inter != 'y' and inter!= 'Y':
             break
 
-    elif ("four" in ch) or ("creating physical volume" in ch):       
+    elif ("4" in ch) or ("creating physical volume" in ch):       
         name1=input("name your physical volume :")
         os.system("pvcreate "+name1)
         inter = input("do you want to continue on LVM  menu  [y/N]:\t")
         if inter != 'y' and inter!= 'Y':
             break
 
-    elif ("five" in ch) or ("watch physical volume" in ch):       
+    elif ("5" in ch) or ("watch physical volume" in ch):       
         name2=input("name your physical volume :")
         os.system("pvdisplay "+name2)
         inter = input("do you want to continue on LVM  menu  [y/N]:\t")
         if inter != 'y' and inter!= 'Y':
             break
 
-    elif ("six" in ch) or ("create volume group" in ch):
+    elif ("6" in ch) or ("create volume group" in ch):
         j=int(input("how many pv you have : "))
         x=" "
         for i in range(j):
@@ -100,14 +100,14 @@ def lvm():
         if inter != 'y' and inter!= 'Y':
             break
     
-    elif ("seven" in ch) or ("watch volume group" in ch):
+    elif ("7" in ch) or ("watch volume group" in ch):
         name3=input("Enter your vg name : ")
         os.system("vgdisplay "+name3)   
         inter = input("do you want to continue on LVM  menu  [y/N]:\t")
         if inter != 'y' and inter!= 'Y':
             break
 
-    elif ("eight" in ch) or ("create logical volume" in ch):
+    elif ("8" in ch) or ("create logical volume" in ch):
         lvname=input("Enter your lv name : ")
         size=input("Enter your size : ")
         vgname=input("Enter your vg name : ")
@@ -116,20 +116,20 @@ def lvm():
         if inter != 'y' and inter!= 'Y':
             break
 
-    elif ("nine" in ch) or ("watch logical volume" in ch):
+    elif ("9" in ch) or ("watch logical volume" in ch):
         lvname=input("Enter your vg name : ")
         os.system("lvdisplay "+lvname)
         inter = input("do you want to continue on LVM  menu  [y/N]:\t")
         if inter != 'y' and inter!= 'Y':
             break
 
-    elif ("ten" in ch) or ("watch all logical volume" in ch):
+    elif ("10" in ch) or ("watch all logical volume" in ch):
         os.system("lvdisplay")
         inter = input("do you want to continue on LVM  menu  [y/N]:\t")
         if inter != 'y' and inter!= 'Y':
             break
 
-    elif ("eleven" in ch) or ("mount partition" in ch):
+    elif ("11" in ch) or ("mount partition" in ch):
         vgname=input("Enter your Volume group name : ")
         lvname=input("Enter your Partition name : ")
         dname=input("Enter your Directory name : ")
@@ -138,7 +138,7 @@ def lvm():
         if inter != 'y' and inter!= 'Y':
             break
 
-    elif ("twelve" in ch) or ("extend partition" in ch):
+    elif ("12" in ch) or ("extend partition" in ch):
         vgname=input("Enter your Volume group name : ")
         lvname=input("Enter your Partition name : ")
         size=input("Enter your Extend Size : ")
@@ -147,13 +147,13 @@ def lvm():
         if inter != 'y' and inter!= 'Y':
             break
 
-    elif ("thirteen" in ch) or ("how much hard disk i have" in ch):
+    elif ("13" in ch) or ("how much hard disk i have" in ch):
         os.system("fdisk -l")
         inter = input("do you want to continue on LVM  menu  [y/N]:\t")
         if inter != 'y' and inter!= 'Y':
             break
 
-    elif ("fourteen" in ch) or ("exit" in ch):
+    elif ("14" in ch) or ("exit" in ch):
         break
 
 
@@ -183,7 +183,7 @@ def aws():
           ch = ch.lower()
         os.system("tput setaf 7")
 
-        if ("install the aws cli software" in ch):
+        if ("install" in ch) and ("aws cli" in ch):
                     os.system("curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o 'awscliv2.zip'")
                     os.system("unzip awscliv2.zip")
                     os.system("sudo ./aws/install")
@@ -192,7 +192,7 @@ def aws():
                     if inter != 'y' and inter!= 'Y':
                           break
 
-        elif ("creating user of aws cli by providing aws iam user" in ch):
+        elif ("creating user" in ch):
                     name = input("provide name to the aws user:\t")
                     os.system("aws configure --profile  {}".format(name))
                     os.system("aws configure list-profiles")
@@ -207,7 +207,7 @@ def aws():
             if inter != 'y' and inter!= 'Y':
                  break
 
-        elif ("create a security group" in ch):
+        elif ("create" in ch) and ("security group" in ch):
                     securitygrp_name=input("enter the securiy group name:\t")
                     ports = input("which port you want to allow:\t")
                     os.system("aws ec2 create-security-group --description 'allow {}  ports' --group-name {}".format(ports, securitygrp_name ))
@@ -225,7 +225,7 @@ def aws():
                     if inter != 'y' and inter!= 'Y':
                           break
 
-        elif (" launch an instance" in ch):
+        elif ("launch" in ch) and ("instance" in ch):
                   
                     sg_id=input("please give securiy group id :\t")
                     key_name=input("please enter the key name :.\t")
@@ -239,13 +239,13 @@ def aws():
                     if inter != 'y' and inter!= 'Y':
                           break
 
-        elif ("create an ebs volume" in ch):
+        elif ("create" in ch) and ("ebs" in ch):
                     os.system("aws ec2 create-volume --availability-zone ap-south-1b --size 1 --volume-type gp2")
                     inter = input("do you want to continue on aws menu [y/N]:\t")
                     if inter != 'y' and inter!= 'Y':
                           break
 
-        elif ("attach the above created ebs volume" in ch):
+        elif ("attach" in ch) and ("ebs" in ch):
                     instance_id=input("please give instance id:")
                     vol_id=input("please give volume id :\t")
                     os.system("aws ec2 attach-volume --device /dev/sdh --instance-id {} --volume-id {}".format(instance_id,vol_id))
@@ -253,14 +253,14 @@ def aws():
                     if inter != 'y' and inter!= 'Y':
                           break
 
-        elif ("create a s3 bucket" in ch):
+        elif ("create" in ch) and ("bucket" in ch):
             bucket_name=input("please give an identical bucket name:\t")
             os.system("aws s3api create-bucket --bucket {} --region ap-south-1 --acl public-read --create-bucket-configuration LocationConstraint=ap-south-1".format(bucket_name))
             inter = input("do you want to continue on aws menu [y/N]:\t")
             if inter != 'y' and inter!= 'Y':
                  break 
 
-        elif ("upload object to the bucket" in ch):
+        elif ("upload object" in ch) and ("bucket" in ch):
             print("Available s3 bucket: " )
             os.system("aws s3 ls")
             bucket_name=input("please give bucket name where you want to upload the object:\t")
@@ -270,7 +270,7 @@ def aws():
             if inter != 'y' and inter!= 'Y':
                  break
 
-        elif ("launch a cloudfront" in ch):
+        elif ("launch" in ch) and ("cloudfront" in ch):
             bucket_name=input("buket name for cloudfront:\t")
             os.system("aws cloudfront create-distribution --origin-domain-name {}.s3.amazonaws.com".format(bucket_name))
             inter = input("do you want to continue on aws menu [y/N]:\t")
@@ -330,7 +330,7 @@ press 2: For installing hadoop remotely
                     break
 
 
-    elif ("Create master in hadoop" in ch):
+    elif ("Create master" in ch):
           print("press 1 : For making the local system Namenode")
           print("press 2 : For making Datanode by ssh")
           datan = int(input("Enter your choice:\t"))
@@ -439,7 +439,7 @@ press 2: For installing hadoop remotely
           if i != 'y' and i!= 'Y':
                     break
 
-    elif ("limit the data node storage" in ch):
+    elif ("limit" in ch) and ("data node" in ch):
           print("press 1 : For making the local system Client")
           print("press 2 : For making Client by ssh")
           datan = int(input("Enter your choice:\t"))
@@ -645,7 +645,7 @@ press 2: For installing hadoop remotely
                     break
 
 
-    elif choice_hadoop == 13:
+    elif ("main menu" in ch):
           break
           
 
@@ -756,15 +756,15 @@ def webserver():
    while True:
         os.system("clear")
         os.system("tput setaf 11")
-        os.system("\n\t\t\tfiglet -t -k webserver menu for local system\n\n\n")
+        os.system("\n\t\t\tfiglet -t -k web server menu for local system\n\n\n")
         print("Configure yum")
-        print("Configure apache webserver")
-        print("Start webserver")
-        print("Make webserver service permanent" )
+        print("Configure apache web server")
+        print("Start web server")
+        print("Make web server service permanent" )
         print("Stop the firewall")
         print("Stop the webserver")
-        print("Upload a local file into webserver")
-        print("Stop the webserver permanently")
+        print("Upload a local file into web server")
+        print("Stop the web server permanently")
         print("Go back to the main menu\n")
         print("What do you want to do:\t")
         ch = ""
@@ -783,7 +783,7 @@ def webserver():
                     break
 
 
-        elif ("configure apache webserver" in ch):
+        elif ("configure"in ch) and ("web server" in ch):
              os.system("yum install httpd -y")
              print("Now the webserver now install you can start the webserver now.")
              i = input("do you want to continue on webserver menu [y/N]:\t")
@@ -791,7 +791,7 @@ def webserver():
                     break
 
 
-        elif ("start webserver" in ch):
+        elif ("start web server" in ch):
              os.system("systemctl start httpd")
              print("Webserver now started on the port no. 80")
              i = input("do you want to continue on webserver menu [y/N]:\t")
@@ -799,7 +799,7 @@ def webserver():
                     break
 
 
-        elif ("webserver service permanent" in ch):
+        elif ("web server" in ch) and ("permanent" in ch):
              os.system("systemctl restart httpd")
              os.system("systemctl enable httpd")
              print("Now the webserver started permanently")
@@ -807,7 +807,7 @@ def webserver():
              if i != 'y' and i!= 'Y':
                     break
 
-        elif ("stop the firewall" in ch):
+        elif ("stop" in ch) and ("firewall" in ch):
              os.system("systemctl stop firewalld")
              print("Firwall stopped successfully")
              i = input("do you want to continue on webserver menu [y/N]:\t")
@@ -815,7 +815,7 @@ def webserver():
                     break
 
 
-        elif ("stop the webserver" in ch):
+        elif ("stop" in ch) and ("web server" in ch):
              os.system("systemctl stop httpd")
              print("Webserver stopped successfully")
              i = input("do you want to continue on webserver menu [y/N]:\t")
@@ -823,7 +823,7 @@ def webserver():
                     break
 
 
-        elif ("upload a file" in ch):
+        elif ("upload" in ch) and ("file" in ch):
              file_name_web = input("Provide the path of the file which would be uploading on the webserver")
              os.system("sudo cp {} /var/www/html ".format(file_name_web))
              print("File uploaded if the path is correct")
@@ -832,10 +832,10 @@ def webserver():
                     break
 
 
-        elif ("stop the webserver" in ch):
+        elif ("stop" in ch) and ("web server" in ch):
              os.system("systemctl stop firewalld")
              os.system("systemctl disable firewalld")
-             i = input("do you want to continue on webserver menu [y/N]:\t")
+             i = input("do you want to continue on web server menu [y/N]:\t")
              if i != 'y' and i!= 'Y':
                     break
 
@@ -850,15 +850,15 @@ def webserver2():
    while True:
         os.system("clear")
         os.system("tput setaf 11")
-        os.system("\n\t\t\tfiglet -t -k webserver via ssh ")
+        os.system("\n\t\t\tfiglet -t -k web server via ssh ")
         print("Configure yum for installing software")
-        print("Configure apache webserver")
-        print("Start webserver service")
-        print("Enable webserver permanently" )
+        print("Configure apache web server")
+        print("Start web server service")
+        print("Enable web server permanently" )
         print("Stop the firewall")
-        print("Stop the webserver")
-        print("Uploading a local file into webserver")
-        print("Stop the webserver permanently")
+        print("Stop the web server")
+        print("Uploading a local file into web server")
+        print("Stop the web server permanently")
         print("Go back to the main menu\n")
         print("What do you wnat to do?")
         ch = ""
@@ -880,7 +880,7 @@ def webserver2():
                     break
 
 
-        elif ("configure apache webserver" in ch):
+        elif ("configure"in ch) and ("web server" in ch):
              sip = input("Enter the ip of the system to connect via ssh for installing webserver:\t")
              os.system("ssh {} yum install httpd -y".format(sip))
              print("Now the webserver now install you can start the webserver now.")
@@ -889,7 +889,7 @@ def webserver2():
                     break
 
 
-        elif ("start webserver" in ch):
+        elif ("start web server" in ch):
              sip = input("Enter the ip of the system to connect via ssh for starting webserver:\t")
              os.system("ssh {}  systemctl start httpd".format(sip))
              print("Webserver now started on the port no. 80")
@@ -898,7 +898,7 @@ def webserver2():
                     break
 
 
-        elif ("enable webserver" in ch):
+        elif ("enable web server" in ch):
              sip = input("Enter the ip of the system to connect via ssh for enabling webserver:\t")
              os.system("ssh {}  systemctl restart httpd".format(sip))
              os.system("ssh {}  systemctl enable httpd".format(sip))
@@ -916,7 +916,7 @@ def webserver2():
                     break
 
 
-        elif ("stop" in ch) and ("webserver" in ch):
+        elif ("stop" in ch) and ("web server" in ch):
              sip = input("Enter the ip of the system to connect via ssh for stopping webserver:\t")
              os.system("ssh {}  systemctl stop httpd".format(sip))
              print("Webserver stopped successfully")
@@ -925,7 +925,7 @@ def webserver2():
                     break
 
 
-        elif ("upload a local file" in ch):
+        elif ("upload" in ch) and("file" in ch):
              sip = input("Enter the ip of the system to connect via ssh for uploading file into webserver:\t")
              file_name_web = input("Provide the path of the file which would be uploading on the webserver")
              os.system("scp cp {} {}:/var/www/html/ ".format(file_name_web,sip))
@@ -935,7 +935,7 @@ def webserver2():
                     break
 
 
-        elif ("stop" in ch) and ("webserver" in ch):
+        elif ("stop" in ch) and ("web server" in ch):
              sip = input("Enter the ip of the system to connect via ssh for disabling firewall:\t")
              os.system("ssh {}  systemctl stop firewalld".format(sip))
              os.system("ssh {}  systemctl disable firewalld".format(sip))
@@ -1011,7 +1011,7 @@ def Docker_menu():
                if i != 'y' and i!= 'Y':
                     break
  
-        elif ("pull an image" in ch):
+        elif ("pull" in ch) and ("image" in ch):
                docker_im = input("Enter the name of the image to be pulled:\t")
                docker_ver = input("Enter the version of the image:\t") 
                if len(docker_ver) < 1:
@@ -1072,7 +1072,7 @@ def Docker_menu2():
                if i != 'y' and i!= 'Y':
                     break
 
-        elif ("launch an os" in ch):
+        elif ("launch" in ch) and ("os" in ch):
                sip = input("Enter the ip of the system to launch docker container via ssh:\t")
                image = input("enter the os you want to launch:\t")
                version = input("Enter the version of the image:\t")
@@ -1087,7 +1087,7 @@ def Docker_menu2():
                if i != 'y' and i!= 'Y':
                     break
 
-        elif ("delete a OS" in ch):
+        elif ("delete" in ch) and ("OS" in ch):
                sip = input("Enter the ip of the system to connect via ssh:\t")
                print("Provide running socker os id or name")
                id_or_name = input("Enter the id or name:\n")
@@ -1103,7 +1103,7 @@ def Docker_menu2():
                if i != 'y' and i!= 'Y':
                     break
  
-        elif ("pull an image" in ch):
+        elif ("pull" in ch) and ("image" in ch):
                sip = input("Enter the ip of the system to connect via ssh:\t")
                docker_im = input("Enter the name of the image to be pulled:\t")
                docker_ver = input("Enter the version of the image:\t") 
@@ -1181,7 +1181,7 @@ Exit
                 if i != 'y' or i != 'Y':
                     break
                 
-          elif ("know ip" in ch):
+          elif ("ip" in ch):
                 r = input("where you want to run your commands ? (local /remote) : ")
                 if r == "local":
                     os.system("ifconfig")
@@ -1193,11 +1193,11 @@ Exit
                     break
                 
 
-          elif ("l v m" in ch):
+          elif ("l v m" in ch) or ("lvm" in ch) or ("lbm" in ch):
                 lvm()
                 break
 
-          elif ("a w s" in ch):
+          elif ("a w s" in ch) or ("aws" in ch):
                 aws()
                 break
 
@@ -1207,7 +1207,7 @@ Exit
                 break
 
 
-          elif ("configure and run" in ch):
+          elif ("web server" in ch):
                 print("press 1 : For making the local system Web Server")
                 print("press 2 : For making remote system webserver")
                 datan = int(input("Enter your choice:\t"))
